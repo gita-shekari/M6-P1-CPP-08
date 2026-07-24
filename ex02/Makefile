@@ -1,5 +1,5 @@
 NAME     := run
-SRCS     := main.cpp
+SRCS     := main.cpp MutantStack.cpp
 OBJS     := $(SRCS:.cpp=.o)
 
 all: $(NAME)
