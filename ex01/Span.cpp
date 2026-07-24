@@ -21,6 +21,7 @@ void Span::addNumber(int num)
 		throw std::runtime_error("No capacity!");
 	numbers.push_back(num);
 }
+
 long long Span::shortestSpan()
 {
 	if(numbers.empty())

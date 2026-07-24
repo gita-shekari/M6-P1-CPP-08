@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cstdlib>
 
-#define MAX_VAL 100000
+#define MAX_VAL 10000
 
 int main()
 {
@@ -62,27 +62,28 @@ int main()
 	std::cout << "\n--- testing with larg number of elements---\n";
 	Span sp_larg(MAX_VAL);
 	srand(time(NULL));
+	std::vector<int> numbers_vector;
+	for (size_t i = 0; i < MAX_VAL; i++)
+	{
+		const int value = rand();
+		numbers_vector.push_back(value);
+	}
 	try
 	{
-		for (size_t i = 0; i < MAX_VAL; i++)
-		{
-			const int value = rand();
-			sp_larg.addNumber(value);
-		}
+		sp_larg.addNumber(numbers_vector.begin(), numbers_vector.end());
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	Span sp_larg_copy(sp_larg);
-	sp_one = sp_larg;
 	std::cout << "shortestSpan: ";
-	try { std::cout << sp_larg_copy.shortestSpan() << '\n'; }
+	try { std::cout << sp_larg.shortestSpan() << '\n'; }
 	catch (const std::exception& e) { std::cout << e.what() << '\n'; }
 
 	std::cout << "longestSpan: ";
-	try { std::cout << sp_larg_copy.longestSpan() << '\n'; }
+	try { std::cout << sp_larg.longestSpan() << '\n'; }
 	catch (const std::exception& e) { std::cout << e.what() << '\n'; }
-
+	Span sp_larg_copy(sp_larg);
+	sp_one = sp_larg;
 	return 0;
 }
