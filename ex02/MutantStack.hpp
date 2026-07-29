@@ -14,10 +14,10 @@ class MutantStack : public std::stack<T>
 
 	public:
 		MutantStack();
-		MutantStack(unsigned int n);
 		MutantStack(const MutantStack &other);
 		MutantStack &operator=(const MutantStack &other);
 		~MutantStack();
+		T iterator();
 };
 
 #endif
